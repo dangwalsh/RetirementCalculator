@@ -13,13 +13,16 @@
 
 @interface ViewController : UIViewController {
     Model *model;
-
+    UIDevice *device;
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil 
-               bundle:(NSBundle *)nibBundleOrNil 
+- (id)initWithNibName: (NSString *)nibNameOrNil 
+               bundle: (NSBundle *)nibBundleOrNil 
                 model: (Model *) m
-title: (NSString *) title
-image: (UIImage *) image
-badge: (NSString *) badge;
+                title: (NSString *) title
+                image: (UIImage *) image
+                badge: (NSString *) badge;
+
+@property (nonatomic, readonly) UIDeviceOrientation deviceOrientation;
+
 @end

@@ -12,9 +12,9 @@
 
 @implementation ViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil 
-               bundle:(NSBundle *)nibBundleOrNil 
-                model:(Model *)m
+- (id)initWithNibName: (NSString *)nibNameOrNil 
+               bundle: (NSBundle *)nibBundleOrNil 
+                model: (Model *)m
                 title: (NSString *) title
                 image: (UIImage *) image
                 badge: (NSString *) badge
@@ -27,6 +27,21 @@
         self.title = title;
         self.tabBarItem.image = image;
         self.tabBarItem.badgeValue = badge;
+        
+        //notification center init and observer should be moved to app delegate
+        
+        NSNotificationCenter *center =
+        [NSNotificationCenter defaultCenter];
+		
+		[center
+         addObserver: self
+         selector: @selector(deviceOrientationDidChange:)
+         name: UIDeviceOrientationDidChangeNotification
+         object: nil
+         ];
+        
+        device = [UIDevice currentDevice];
+		[device beginGeneratingDeviceOrientationNotifications];
     }
     return self;
 }
@@ -39,6 +54,15 @@
                  model: model
                  ]; //might not need the model in the view
 }
+
+- (void) deviceOrientationDidChange: (NSNotification *) n {
+	[self.view setNeedsDisplay];
+}
+
+- (UIDeviceOrientation) deviceOrientation {
+	return device.orientation;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

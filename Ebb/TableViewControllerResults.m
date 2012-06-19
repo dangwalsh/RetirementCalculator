@@ -15,7 +15,7 @@
 
 @implementation TableViewControllerResults
 
-- (id) initWithStyle:(UITableViewStyle) style
+- (id) initWithStyle: (UITableViewStyle) style
                model: (Model *) m
            indexPath: (NSIndexPath *) p
                title: (NSString *) title
@@ -26,13 +26,12 @@
     if (self) {
         // Custom initialization
         model = m;
-        //indexPath = p;
         self.title = title;
         self.tabBarItem.image = image;
         self.tabBarItem.badgeValue = badge;
         
         [self sliderValueChanged:slider];
-
+        
     }
     return self;
 }
@@ -40,10 +39,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -105,7 +104,7 @@
                                       reuseIdentifier:CellIdentifier];
 	}
     // Configure the cell...
-
+    
     CGRect f = CGRectMake(
                           10, 
                           10, 
@@ -126,7 +125,7 @@
     [numTest setNumberStyle:NSNumberFormatterDecimalStyle];
     
     NSArray *outGroup = [model outputLabelNames: indexPath];
-
+    
     
     cell.textLabel.text = [outGroup objectAtIndex: indexPath.row];
     
@@ -140,11 +139,11 @@
     } else {
         cell.accessoryView = slider;
         [(UISlider *)cell.accessoryView 
-            addTarget:self 
-            action:@selector(sliderValueChanged:) 
-            forControlEvents:UIControlEventValueChanged];
+         addTarget:self 
+         action:@selector(sliderValueChanged:) 
+         forControlEvents:UIControlEventValueChanged];
     }
-
+    
     if (indexPath.row != 7 && indexPath.row != 0) {
         float f = [val floatValue];
         if (f < 1.0 && f > 0.0) {
@@ -159,7 +158,7 @@
         int adj = n + model.currentAge;
         cell.detailTextLabel.text = [NSString stringWithFormat:@"%i",adj];
     }
- 
+    
     return cell;
 }
 
@@ -174,43 +173,43 @@
 }
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+ // Override to support conditional editing of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the specified item to be editable.
+ return YES;
+ }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ }   
+ else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }   
+ }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+ // Override to support rearranging the table view.
+ - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+ {
+ }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+ // Override to support conditional rearranging of the table view.
+ - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ // Return NO if you do not want the item to be re-orderable.
+ return YES;
+ }
+ */
 
 #pragma mark - Table view delegate
 

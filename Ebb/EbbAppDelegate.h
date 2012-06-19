@@ -18,6 +18,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-- (void) getResults;
+//- (void) getResults;
 
 @end
